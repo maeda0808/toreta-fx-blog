@@ -1,0 +1,56 @@
+---
+export const prerender = true;
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('fx-guides');
+  return posts.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const categoryLabels: Record<string, string> = {
+    basics: '🔰 基礎知識',
+    technical: '📈 テクニカル',
+    risk: '🛡️ リスク管理',
+    books: '📚 本紹介',
+    youtube: '📺 YouTube',
+    other: '📝 その他'
+};
+const categoryLabel = categoryLabels[entry.data.category] || entry.data.category;
+---
+<Layout title={`${entry.data.title} - トレ太のFX実践日記`}>
+    <article class="container">
+        <header class="post-header">
+            <span class="category">{categoryLabel}</span>
+            <h1>{entry.data.title}</h1>
+        </header>
+
+        <div class="content prose">
+            <Content />
+        </div>
+        
+        <div class="footer-nav">
+             <a href="/learn">一覧に戻る</a>
+        </div>
+    </article>
+</Layout>
+
+<style>
+    .container { max-width: 800px; margin: 0 auto; }
+    .post-header { margin-bottom: 2rem; border-bottom: 1px solid var(--c-border); padding-bottom: 1rem; }
+    .category { background: var(--c-bg-sub); padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.9rem; display: inline-block; margin-bottom: 0.5rem; }
+    .prose { line-height: 1.8; font-size: 1.05rem; margin-bottom: 3rem; }
+    .footer-nav { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--c-border); text-align: center; }
+    
+    .prose :global(h2) { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; border-left: 5px solid var(--c-primary); padding-left: 1rem; background: #f0f9ff; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .prose :global(h3) { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.2rem; }
+    .prose :global(p) { margin-bottom: 1.5rem; }
+    .prose :global(ul) { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .prose :global(li) { margin-bottom: 0.5rem; }
+    .prose :global(img) { max-width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid var(--c-border); display: block; margin: 2rem auto; }
+</style>

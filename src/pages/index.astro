@@ -1,16 +1,115 @@
 ---
-
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="トレ太のFX実践日記 - 負けないトレーダーを目指す日々の記録">
+	<div class="hero">
+        <div class="hero-content">
+            <h1>FXで負け続ける男、<br />トレ太の逆襲記録</h1>
+            <p>30代サラリーマンが「負けないFX」を目指して日々奮闘するリアルなドキュメンタリーブログ。</p>
+            <div class="hero-buttons">
+                <a href="/practice" class="btn btn-primary">最新のマンガを読む</a>
+                <a href="/about" class="btn btn-secondary">プロフィールを見る</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Placeholder for character image -->
+            <div class="char-placeholder">トレ太 & ブルベア</div>
+        </div>
+    </div>
+
+    <section class="section">
+        <h2>最新の実践記録</h2>
+        <p>（ここに最新記事が表示されます）</p>
+        <div style="margin-top: 1rem;">
+             <p>記事はまだありません。</p>
+             <a href="/keystatic">管理画面で記事を作成</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>人気のFX解説記事</h2>
+        <p>（まだ記事がありません）</p>
+    </section>
+</Layout>
+
+<style>
+    .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+        background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+        margin-bottom: 3rem;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--c-text);
+    }
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: var(--c-text-light);
+    }
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+    .btn {
+        padding: 0.8rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: bold;
+        transition: opacity 0.2s;
+    }
+    .btn-primary {
+        background: var(--c-primary);
+        color: white;
+    }
+    .btn-secondary {
+        background: white;
+        color: var(--c-primary);
+        border: 2px solid var(--c-primary);
+    }
+    .btn:hover {
+        opacity: 0.9;
+        text-decoration: none;
+    }
+    .char-placeholder {
+        width: 100%;
+        height: 300px;
+        background: #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1rem;
+        font-weight: bold;
+        color: #666;
+    }
+    .section {
+        margin-bottom: 3rem;
+    }
+    .section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        border-left: 5px solid var(--c-primary);
+        padding-left: 1rem;
+    }
+    @media (max-width: 768px) {
+        .hero {
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .hero-buttons {
+            justify-content: center;
+        }
+        .hero h1 {
+            font-size: 2rem;
+        }
+    }
+</style>

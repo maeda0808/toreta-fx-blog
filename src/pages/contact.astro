@@ -1,0 +1,30 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="お問い合わせ - トレ太のFX実践日記">
+    <div class="container">
+        <h1>お問い合わせ</h1>
+        <p>
+            当ブログに関するお問い合わせは、X (旧Twitter) のダイレクトメッセージにて受け付けています。<br>
+            お気軽にご連絡ください。
+        </p>
+        <p class="mt-4">
+            <a href="https://twitter.com/toreta_fx" target="_blank" class="x-link">@toreta_fx をフォローする</a>
+        </p>
+    </div>
+</Layout>
+<style>
+    .container { max-width: 800px; margin: 0 auto; padding-bottom: 4rem; }
+    h1 { margin-bottom: 2rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem; }
+    .mt-4 { margin-top: 2rem; }
+    .x-link {
+        display: inline-block;
+        background: #000;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 9999px;
+        font-weight: bold;
+    }
+    .x-link:hover { opacity: 0.8; text-decoration: none; }
+</style>

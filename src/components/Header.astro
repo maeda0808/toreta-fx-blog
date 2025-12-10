@@ -1,0 +1,66 @@
+---
+---
+<header class="header">
+    <div class="container">
+        <a href="/" class="logo">
+            <span class="logo-icon">📈</span>
+            トレ太のFX実践日記
+        </a>
+        <nav class="nav">
+            <a href="/">HOME</a>
+            <a href="/practice">実践記録</a>
+            <a href="/learn">FX解説</a>
+            <a href="/broker">おすすめ口座</a>
+            <a href="/about">プロフィール</a>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .header {
+        background: #fff;
+        border-bottom: 1px solid var(--c-border);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: var(--c-text);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .logo:hover {
+        text-decoration: none;
+        opacity: 0.8;
+    }
+    .nav {
+        display: flex;
+        gap: 1.5rem;
+    }
+    .nav a {
+        color: var(--c-text);
+        font-weight: 500;
+    }
+    .nav a:hover {
+        color: var(--c-primary);
+        text-decoration: none;
+    }
+    @media (max-width: 768px) {
+        .nav {
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+    }
+</style>

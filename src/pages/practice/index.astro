@@ -1,0 +1,25 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+// import { getCollection } from 'astro:content';
+// const allPosts = await getCollection('daily-trades');
+---
+
+<Layout title="実践記録一覧 - トレ太のFX実践日記">
+    <div class="container">
+        <h1>実践記録一覧</h1>
+        <p>日々のトレード記録です。（現在準備中）</p>
+        
+        <div class="empty-state">
+            <p>まだ記事がありません。</p>
+            <a href="/keystatic/collection/dailyTrades/create" class="btn">最初の記事を書く</a>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .container { max-width: 1000px; margin: 0 auto; }
+    h1 { margin-bottom: 2rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem; }
+    .btn { display: inline-block; background: var(--c-primary); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; }
+    .empty-state { padding: 3rem; text-align: center; background: var(--c-bg-sub); border-radius: 1rem; }
+</style>

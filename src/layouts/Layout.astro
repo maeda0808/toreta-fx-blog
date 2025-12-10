@@ -1,0 +1,74 @@
+---
+interface Props {
+	title: string;
+    description?: string;
+}
+
+const { title, description = "トレ太のFX実践日記 - 負けないトレーダーを目指す日々の記録" } = Astro.props;
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+        <Header />
+        <main class="main">
+		    <slot />
+        </main>
+        <Footer />
+	</body>
+</html>
+<style>
+    .main {
+        flex: 1;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+</style>
+<style is:global>
+	:root {
+		--c-primary: #2563eb;
+		--c-primary-light: #3b82f6;
+		--c-secondary: #10b981;
+		--c-accent: #ef4444;
+		--c-text: #1f2937;
+		--c-text-light: #6b7280;
+		--c-bg: #ffffff;
+		--c-bg-sub: #f3f4f6;
+		--c-border: #e5e7eb;
+	}
+	html {
+		font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+		background: var(--c-bg);
+		color: var(--c-text);
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	a {
+		color: var(--c-primary);
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	* {
+		box-sizing: border-box;
+	}
+</style>

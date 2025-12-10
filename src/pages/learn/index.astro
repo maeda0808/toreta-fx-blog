@@ -1,0 +1,39 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="FX解説一覧 - トレ太のFX実践日記">
+    <div class="container">
+        <h1>FX解説記事一覧</h1>
+        <p>初心者向けのFX解説です。（現在準備中）</p>
+
+        <div class="grid">
+            <div class="category-card">
+                <h2>🔰 基礎知識</h2>
+                <p>FXの仕組みから用語まで</p>
+            </div>
+            <div class="category-card">
+                <h2>📈 テクニカル</h2>
+                <p>チャート分析の基礎</p>
+            </div>
+             <div class="category-card">
+                <h2>🛡️ リスク管理</h2>
+                <p>資金を守るための技術</p>
+            </div>
+        </div>
+        
+        <div class="empty-state">
+            <p>まだ記事がありません。</p>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .container { max-width: 1000px; margin: 0 auto; }
+    h1 { margin-bottom: 2rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .category-card { background: #fff; border: 1px solid var(--c-border); padding: 1.5rem; border-radius: 1rem; }
+    .category-card h2 { margin-top: 0; font-size: 1.25rem; }
+    .empty-state { padding: 3rem; text-align: center; background: var(--c-bg-sub); border-radius: 1rem; }
+</style>

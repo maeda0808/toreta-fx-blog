@@ -1,0 +1,43 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+    <div class="container">
+        <p class="copyright">&copy; {year} トレ太のFX実践日記 All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/about">プロフィール</a>
+            <a href="/contact">お問い合わせ</a>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        background: var(--c-bg-sub);
+        padding: 2rem 0;
+        margin-top: auto;
+        text-align: center;
+        border-top: 1px solid var(--c-border);
+    }
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    .copyright {
+        color: var(--c-text-light);
+        margin-bottom: 1rem;
+    }
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    .footer-links a {
+        color: var(--c-text-light);
+        font-size: 0.9rem;
+    }
+    .footer-links a:hover {
+        color: var(--c-primary);
+    }
+</style>

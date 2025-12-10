@@ -1,0 +1,54 @@
+---
+export const prerender = true;
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('daily-trades');
+  return posts.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<Layout title={`${entry.slug}のトレード - トレ太のFX実践日記`}>
+    <article class="container">
+        <header class="post-header">
+            <div class="meta">
+                <span class="date">{entry.slug}</span>
+                <span class={`result result-${entry.data.result}`}>{entry.data.result?.toUpperCase() || 'NONE'}</span>
+                <span class="pair">{entry.data.pair?.toUpperCase() || 'USDJPY'}</span>
+            </div>
+            <h1>{entry.slug} のトレード記録</h1>
+        </header>
+
+        {entry.data.image && (
+            <div class="manga-container">
+                <img src={entry.data.image} alt="トレードマンガ" />
+            </div>
+        )}
+
+        <div class="content prose">
+            <Content />
+        </div>
+        
+        <div class="footer-nav">
+             <a href="/practice">一覧に戻る</a>
+        </div>
+    </article>
+</Layout>
+
+<style>
+    .container { max-width: 800px; margin: 0 auto; }
+    .post-header { margin-bottom: 2rem; border-bottom: 1px solid var(--c-border); padding-bottom: 1rem; }
+    .meta { display: flex; gap: 1rem; margin-bottom: 0.5rem; align-items: center; }
+    .result { font-weight: bold; padding: 0.2rem 0.5rem; border-radius: 4px; color: white; background: #999; font-size: 0.9rem; }
+    .result-win { background: var(--c-secondary); }
+    .result-loss { background: var(--c-accent); }
+    .pair { font-weight: bold; color: var(--c-text-light); }
+    .manga-container img { width: 100%; border-radius: 0.5rem; border: 1px solid var(--c-border); margin-bottom: 2rem; }
+    .prose { line-height: 1.8; margin-bottom: 3rem; }
+    .footer-nav { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--c-border); text-align: center; }
+</style>

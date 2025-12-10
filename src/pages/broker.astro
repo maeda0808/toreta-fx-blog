@@ -1,0 +1,123 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="おすすめFX口座 - トレ太のFX実践日記">
+    <div class="container">
+        <h1>トレ太のおすすめFX口座</h1>
+        <p class="lead">
+            僕が実際に使ってみて、「これは使いやすい！」と思ったFX口座を厳選して紹介します。<br>
+            これからFXを始める初心者の方は、まずはこの中から選べば間違いありません。
+        </p>
+
+        <div class="broker-card recommended">
+            <div class="badge">トレ太のメイン口座</div>
+            <div class="broker-header">
+                <h2>DMM FX</h2>
+                <div class="logo-placeholder">DMM FX Logo</div>
+            </div>
+            <div class="broker-body">
+                <div class="features">
+                    <h3>おすすめポイント</h3>
+                    <ul>
+                        <li>✅ <strong>スマホアプリがとにかく使いやすい！</strong></li>
+                        <li>✅ 口座開設が最短1時間で完了</li>
+                        <li>✅ スプレッドが業界最狭水準（ドル円 0.2銭原則固定）</li>
+                        <li>✅ LINEでの問い合わせに対応していて安心</li>
+                    </ul>
+                </div>
+                <div class="comment-box">
+                    <div class="comment-icon">🗣️</div>
+                    <p>
+                        <strong>トレ太のコメント:</strong><br>
+                        僕のメイン口座です。チャートが見やすくて、注文もワンタップでできるので、デイトレードに最適です。
+                        初心者向けのコンテンツも充実しているので、最初に作るなら絶対ここ！
+                    </p>
+                </div>
+                <div class="action-area">
+                    <a href="#" class="btn btn-primary btn-lg">公式サイトで詳細を見る</a>
+                    <p class="note">※最短1時間で取引開始可能！</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="broker-card">
+            <div class="broker-header">
+                <h2>GMOクリック証券</h2>
+                 <div class="logo-placeholder">GMO Logo</div>
+            </div>
+            <div class="broker-body">
+                <p>（ここに紹介文が入ります）</p>
+                <div class="action-area">
+                    <a href="#" class="btn btn-secondary">公式サイトへ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { margin-bottom: 1rem; border-bottom: 2px solid var(--c-border); padding-bottom: 1rem; }
+    .lead { margin-bottom: 3rem; font-size: 1.1rem; line-height: 1.6; }
+    
+    .broker-card {
+        border: 1px solid var(--c-border);
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        background: #fff;
+        position: relative;
+    }
+    .broker-card.recommended {
+        border: 3px solid var(--c-primary);
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+    }
+    .badge {
+        position: absolute;
+        top: -1px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--c-primary);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 9999px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    }
+    .broker-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--c-bg-sub);
+        padding-bottom: 1rem;
+    }
+    .broker-header h2 { margin: 0; font-size: 1.8rem; }
+    .logo-placeholder { background: #eee; padding: 0.5rem 1rem; border-radius: 0.5rem; color: #666; font-size: 0.8rem; }
+    
+    .features ul { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .features li { margin-bottom: 0.5rem; font-size: 1.1rem; }
+    
+    .comment-box {
+        background: #eff6ff;
+        border: 1px solid #dbeafe;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        gap: 1rem;
+    }
+    .comment-icon { font-size: 2rem; }
+    .comment-box p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+    
+    .action-area { text-align: center; }
+    .btn { display: inline-block; padding: 0.8rem 2rem; border-radius: 0.5rem; font-weight: bold; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: linear-gradient(to right, var(--c-primary), var(--c-primary-light)); color: white; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.4); }
+    .btn-lg { font-size: 1.25rem; padding: 1rem 3rem; }
+    .btn-secondary { background: #fff; border: 2px solid var(--c-border); color: var(--c-text); }
+    .note { margin-top: 0.5rem; font-size: 0.85rem; color: var(--c-text-light); }
+</style>

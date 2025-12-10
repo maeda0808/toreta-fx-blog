@@ -1,0 +1,158 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="プロフィール - トレ太のFX実践日記">
+    <div class="container pb-6">
+        <h1>運営者プロフィール</h1>
+
+        <div class="profile-card">
+            <div class="profile-header">
+                <h2>主役: トレ太 (30歳)</h2>
+                <span class="role">実践担当</span>
+            </div>
+            <div class="profile-body">
+                <div class="profile-img placeholder">トレ太画像</div>
+                <div class="profile-text">
+                    <p>
+                        都内のIT企業に勤める30代サラリーマン。<br>
+                        FX歴は5年だが、トータル収支はマイナス200万円。<br>
+                        「損小利大」が頭ではわかっているのに、つい「損大利小」になってしまうのが悩み。<br>
+                        <br>
+                        諦めずに勝ちトレーダーになるまでの過程を、包み隠さず公開します！
+                    </p>
+                    <ul class="stats">
+                        <li><strong>投資スタイル:</strong> デイトレード 〜 スイング</li>
+                        <li><strong>得意な通貨:</strong> ドル円 (USD/JPY)</li>
+                        <li><strong>弱点:</strong> 損切りラインをずらしてしまうこと</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-header">
+                <h2>解説: ブル先生 🐂</h2>
+                <span class="role role-bull">強気派</span>
+            </div>
+            <div class="profile-body">
+                <div class="profile-img placeholder">ブル先生画像</div>
+                <div class="profile-text">
+                    <p>
+                        相場の上昇を信じる楽観的な先生。<br>
+                        「下がったら買い！」が口癖。<br>
+                        トレ太を励まし、ポジティブな視点を提供する。<br>
+                        細かいことは気にしない豪快な性格。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-header">
+                <h2>解説: ベア先生 🐻</h2>
+                <span class="role role-bear">弱気派</span>
+            </div>
+            <div class="profile-body">
+                <div class="profile-img placeholder">ベア先生画像</div>
+                <div class="profile-text">
+                    <p>
+                        常にリスクを警戒する慎重な先生。<br>
+                        「まだ下がるかもしれない」が口癖。<br>
+                        トレ太の甘い考えを厳しく指摘し、資金管理の大切さを説く。<br>
+                        データ分析が得意な理系タイプ。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    h1 {
+        margin-bottom: 2rem;
+        border-bottom: 2px solid var(--c-border);
+        padding-bottom: 1rem;
+    }
+    .profile-card {
+        background: #fff;
+        border: 1px solid var(--c-border);
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--c-bg-sub);
+        padding-bottom: 1rem;
+    }
+    .profile-header h2 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    .role {
+        background: var(--c-primary);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: bold;
+    }
+    .role-bull {
+        background: var(--c-secondary);
+    }
+    .role-bear {
+        background: #f59e0b;
+    }
+    .profile-body {
+        display: flex;
+        gap: 2rem;
+    }
+    .profile-img {
+        width: 120px;
+        height: 120px;
+        background: #eee;
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        color: #888;
+    }
+    .profile-text {
+        flex: 1;
+    }
+    .stats {
+        margin-top: 1rem;
+        background: var(--c-bg-sub);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        list-style: none;
+    }
+    .stats li {
+        margin-bottom: 0.5rem;
+    }
+    .stats li:last-child {
+        margin-bottom: 0;
+    }
+    @media (max-width: 600px) {
+        .profile-body {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .stats {
+            text-align: left;
+        }
+    }
+</style>
