@@ -1,0 +1,89 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+    entry: CollectionEntry<'daily-trades'>;
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+
+// Format date
+const dateStr = data.date ? new Date(data.date).toLocaleDateString('ja-JP') : entry.slug;
+---
+
+<article class="card">
+    <a href={`/practice/${entry.slug}`} class="card-link">
+        <div class="card-image placeholder">
+            {data.image ? <img src={data.image} alt="Trade Visual" /> : <span>No Image</span>}
+        </div>
+        <div class="card-content">
+            <div class="card-meta">
+                <span class="date">{dateStr}</span>
+                {data.result && (
+                    <span class={`tag tag-${data.result}`}>{data.result.toUpperCase()}</span>
+                )}
+            </div>
+            <h3>{entry.slug} のトレード</h3>
+            <p>詳細を見る &rarr;</p>
+        </div>
+    </a>
+</article>
+
+<style>
+    .card {
+        background: #fff;
+        border: 1px solid var(--c-border);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .card-link {
+        display: block;
+        color: inherit;
+        text-decoration: none !important;
+    }
+    .card-image {
+        height: 180px;
+        background: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #9ca3af;
+        overflow: hidden;
+    }
+    .card-image img { width: 100%; height: 100%; object-fit: cover; }
+    .card-content {
+        padding: 1.2rem;
+    }
+    .card-meta {
+        font-size: 0.85rem;
+        color: var(--c-text-light);
+        margin-bottom: 0.5rem;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .tag {
+        font-size: 0.75rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        color: white;
+        font-weight: bold;
+    }
+    .tag-loss { background: var(--c-accent); }
+    .tag-win { background: var(--c-secondary); }
+    .tag-draw { background: #9ca3af; }
+    
+    .card h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.15rem;
+        line-height: 1.4;
+    }
+    .card p { margin: 0; font-size: 0.9rem; color: var(--c-primary); }
+</style>
