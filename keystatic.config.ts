@@ -9,6 +9,7 @@ export default config({
             label: '実践記録 (Daily Trades)',
             slugField: 'title',
             path: 'src/content/daily-trades/*',
+            previewUrl: '/practice/{slug}',
             format: { contentField: 'content' },
             schema: {
                 title: fields.slug({ name: { label: 'タイトル (例: 2025-12-10)' } }),
@@ -47,6 +48,7 @@ export default config({
             label: 'FX解説 (Guides)',
             slugField: 'title',
             path: 'src/content/fx-guides/*',
+            previewUrl: '/learn/{slug}',
             format: { contentField: 'content' },
             schema: {
                 title: fields.slug({ name: { label: 'タイトル' } }),
