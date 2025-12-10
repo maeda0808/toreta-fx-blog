@@ -24,7 +24,7 @@ import Layout from '../layouts/Layout.astro';
         <p>（ここに最新記事が表示されます）</p>
         <div style="margin-top: 1rem;">
              <p>記事はまだありません。</p>
-             <a href="/keystatic">管理画面で記事を作成</a>
+             {import.meta.env.DEV && <a href="/keystatic">admin</a>}
         </div>
     </section>
 
