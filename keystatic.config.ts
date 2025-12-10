@@ -7,11 +7,12 @@ export default config({
     collections: {
         dailyTrades: collection({
             label: '実践記録 (Daily Trades)',
-            slugField: 'date',
+            slugField: 'title',
             path: 'src/content/daily-trades/*',
             format: { contentField: 'content' },
             schema: {
-                date: fields.slug({ name: { label: '日付 (YYYY-MM-DD)' } }),
+                title: fields.slug({ name: { label: 'タイトル (例: 2025-12-10)' } }),
+                date: fields.date({ label: '実際のトレード日', validation: { isRequired: true }, defaultValue: { kind: 'today' } }),
                 image: fields.image({
                     label: 'マンガ画像',
                     directory: 'public/images/daily-trades',

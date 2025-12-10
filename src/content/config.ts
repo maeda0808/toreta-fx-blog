@@ -3,6 +3,7 @@ import { defineCollection, z } from 'astro:content';
 const dailyTradesCollection = defineCollection({
     type: 'content',
     schema: z.object({
+        title: z.string().optional(),
         date: z.coerce.date().optional(),
         image: z.string().optional(),
         pair: z.enum(['usdjpy', 'eurusd', 'gbpjpy', 'other']).optional(),
