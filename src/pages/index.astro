@@ -1,115 +1,266 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
 ---
 
 <Layout title="トレ太のFX実践日記 - 負けないトレーダーを目指す日々の記録">
-	<div class="hero">
-        <div class="hero-content">
-            <h1>FXで負け続ける男、<br />トレ太の逆襲記録</h1>
-            <p>30代サラリーマンが「負けないFX」を目指して日々奮闘するリアルなドキュメンタリーブログ。</p>
-            <div class="hero-buttons">
-                <a href="/practice" class="btn btn-primary">最新のマンガを読む</a>
-                <a href="/about" class="btn btn-secondary">プロフィールを見る</a>
+    <!-- Hero Section (Full Width) -->
+    <div class="hero-wrapper">
+        <div class="hero container">
+            <div class="hero-content">
+                <h1>FXで負け続ける男、<br />トレ太の逆襲記録</h1>
+                <p>30代サラリーマンが「負けないFX」を目指して日々奮闘するリアルなドキュメンタリーブログ。</p>
             </div>
-        </div>
-        <div class="hero-image">
-            <!-- Placeholder for character image -->
-            <div class="char-placeholder">トレ太 & ブルベア</div>
+            <div class="hero-image">
+                <!-- Placeholder -->
+                <div class="char-placeholder">トレ太 & ブルベア</div>
+            </div>
         </div>
     </div>
 
-    <section class="section">
-        <h2>最新の実践記録</h2>
-        <p>（ここに最新記事が表示されます）</p>
-        <div style="margin-top: 1rem;">
-             <p>記事はまだありません。</p>
-             {import.meta.env.DEV && <a href="/keystatic">admin</a>}
-        </div>
-    </section>
+    <!-- Main Content Area (2 Columns) -->
+    <div class="main-container container">
+        <div class="content-area">
+            <!-- Latest Articles Section -->
+            <section class="latest-section">
+                <h2 class="section-title">最新の実践記録</h2>
+                
+                <div class="article-grid">
+                    <!-- Article Card 1 (Sample) -->
+                    <article class="card">
+                        <a href="/practice/2025-12-10" class="card-link">
+                            <div class="card-image placeholder">
+                                <span>No Image</span>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-meta">
+                                    <span class="date">2025.12.10</span>
+                                    <span class="tag tag-loss">LOSS</span>
+                                </div>
+                                <h3>ドル円ロングで損切り...反省の記録</h3>
+                                <p>今日は150.50付近のサポートを背にロングしましたが、見事に狩られました。敗因は...</p>
+                            </div>
+                        </a>
+                    </article>
 
-    <section class="section">
-        <h2>人気のFX解説記事</h2>
-        <p>（まだ記事がありません）</p>
-    </section>
+                    <!-- Article Card 2 (Empty) -->
+                     <article class="card empty-card">
+                        <p>記事はまだありません</p>
+                    </article>
+                </div>
+                
+                <div class="more-link">
+                    <a href="/practice" class="btn btn-outline">実践記録をもっと見る &rarr;</a>
+                </div>
+            </section>
+
+             <!-- FX Guides Section -->
+             <section class="latest-section mt-5">
+                <h2 class="section-title">初心者向けFX解説</h2>
+                <div class="article-list">
+                     <article class="list-card">
+                        <a href="/learn/what-is-fx" class="list-link">
+                            <div class="list-icon">🔰</div>
+                            <div class="list-content">
+                                <h3>FXとは？初心者が知っておくべき基礎知識</h3>
+                                <p>FXの仕組みからリスクまで、わかりやすく解説します。</p>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <Sidebar />
+    </div>
 </Layout>
 
 <style>
+    /* Layout */
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    .main-container {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 2.5rem;
+        margin-top: 3rem;
+        margin-bottom: 4rem;
+    }
+
+    /* Hero */
+    .hero-wrapper {
+        background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+        padding: 4rem 0;
+        border-bottom: 1px solid #e5e7eb;
+    }
     .hero {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        grid-template-columns: 1.2fr 0.8fr;
         align-items: center;
-        background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
-        padding: 3rem 2rem;
-        border-radius: 1rem;
-        margin-bottom: 3rem;
+        gap: 2rem;
     }
     .hero h1 {
         font-size: 2.5rem;
-        line-height: 1.2;
+        line-height: 1.3;
         margin-bottom: 1rem;
         color: var(--c-text);
     }
     .hero p {
         font-size: 1.1rem;
-        margin-bottom: 2rem;
         color: var(--c-text-light);
-    }
-    .hero-buttons {
-        display: flex;
-        gap: 1rem;
-    }
-    .btn {
-        padding: 0.8rem 1.5rem;
-        border-radius: 0.5rem;
-        font-weight: bold;
-        transition: opacity 0.2s;
-    }
-    .btn-primary {
-        background: var(--c-primary);
-        color: white;
-    }
-    .btn-secondary {
-        background: white;
-        color: var(--c-primary);
-        border: 2px solid var(--c-primary);
-    }
-    .btn:hover {
-        opacity: 0.9;
-        text-decoration: none;
     }
     .char-placeholder {
         width: 100%;
-        height: 300px;
-        background: #ddd;
+        height: 250px;
+        background: rgba(255,255,255,0.5);
+        border: 2px dashed #9ca3af;
+        border-radius: 1rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 1rem;
-        font-weight: bold;
         color: #666;
     }
-    .section {
-        margin-bottom: 3rem;
-    }
-    .section h2 {
-        font-size: 1.8rem;
+
+    /* Section */
+    .section-title {
+        font-size: 1.5rem;
         margin-bottom: 1.5rem;
-        border-left: 5px solid var(--c-primary);
-        padding-left: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--c-primary);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
     }
+    .mt-5 { margin-top: 3rem; }
+
+    /* Cards */
+    .article-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .card {
+        background: #fff;
+        border: 1px solid var(--c-border);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .card-link {
+        display: block;
+        color: inherit;
+        text-decoration: none !important;
+    }
+    .card-image {
+        height: 180px;
+        background: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #9ca3af;
+    }
+    .card-content {
+        padding: 1.2rem;
+    }
+    .card-meta {
+        font-size: 0.85rem;
+        color: var(--c-text-light);
+        margin-bottom: 0.5rem;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .tag {
+        font-size: 0.75rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        color: white;
+        font-weight: bold;
+    }
+    .tag-loss { background: var(--c-accent); }
+    .tag-win { background: var(--c-secondary); }
+    
+    .card h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.15rem;
+        line-height: 1.4;
+    }
+    .card p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--c-text-light);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* List Card */
+    .list-card {
+        background: #fff;
+        border: 1px solid var(--c-border);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        transition: background 0.2s;
+    }
+    .list-card:hover {
+        background: #f9fafb;
+    }
+    .list-link {
+        display: flex;
+        padding: 1rem;
+        color: inherit;
+        text-decoration: none !important;
+        align-items: center;
+        gap: 1rem;
+    }
+    .list-icon {
+        font-size: 2rem;
+        width: 60px;
+        text-align: center;
+    }
+    .list-content h3 { margin: 0 0 0.2rem 0; font-size: 1.1rem; }
+    .list-content p { margin: 0; font-size: 0.9rem; color: var(--c-text-light); }
+
+    /* Buttons */
+    .btn-outline {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        border: 1px solid var(--c-border);
+        border-radius: 9999px;
+        color: var(--c-text);
+        background: white;
+        transition: all 0.2s;
+        font-weight: bold;
+    }
+    .btn-outline:hover {
+        border-color: var(--c-primary);
+        color: var(--c-primary);
+        text-decoration: none;
+    }
+    .more-link { text-align: center; }
+
     @media (max-width: 768px) {
+        .main-container {
+            grid-template-columns: 1fr;
+        }
         .hero {
             grid-template-columns: 1fr;
             text-align: center;
-            padding: 2rem 1rem;
         }
-        .hero-buttons {
-            justify-content: center;
-        }
-        .hero h1 {
-            font-size: 2rem;
+        .sidebar {
+            order: 2;
         }
     }
 </style>

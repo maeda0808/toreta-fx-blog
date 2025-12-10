@@ -1,0 +1,131 @@
+---
+---
+<aside class="sidebar">
+    <!-- Profile Widget -->
+    <div class="widget profile-widget">
+        <div class="widget-header">
+            <h3>プロフィール</h3>
+        </div>
+        <div class="profile-content">
+            <div class="profile-icon">
+                <span>トレ太</span>
+            </div>
+            <p class="profile-bio">
+                FX歴5年、負け続きの30代サラリーマン。<br>
+                「負けないFX」を目指して奮闘中！
+            </p>
+            <a href="/about" class="profile-link">詳しく見る &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Category Widget -->
+    <div class="widget category-widget">
+        <div class="widget-header">
+            <h3>カテゴリー</h3>
+        </div>
+        <ul>
+            <li><a href="/practice">📊 実践記録 (Daily)</a></li>
+            <li><a href="/learn">🔰 FX基礎知識</a></li>
+            <li><a href="/learn">📈 テクニカル分析</a></li>
+            <li><a href="/broker">🏢 おすすめ口座</a></li>
+        </ul>
+    </div>
+
+    <!-- Banner Widget (Placeholder) -->
+    <div class="widget banner-widget">
+        <a href="/broker">
+            <div class="banner-placeholder">
+                DMM FX<br>
+                <span style="font-size:0.8em">最短1時間で取引開始！</span>
+            </div>
+        </a>
+    </div>
+</aside>
+
+<style>
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .widget {
+        background: #fff;
+        border: 1px solid var(--c-border);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .widget-header {
+        background: var(--c-bg-sub);
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid var(--c-border);
+    }
+    .widget-header h3 {
+        margin: 0;
+        font-size: 1rem;
+        color: var(--c-text);
+        font-weight: bold;
+    }
+    .profile-content {
+        padding: 1.5rem;
+        text-align: center;
+    }
+    .profile-icon {
+        width: 80px;
+        height: 80px;
+        background: #e0f2fe;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: var(--c-primary);
+        border: 2px solid var(--c-primary);
+    }
+    .profile-bio {
+        font-size: 0.9rem;
+        color: var(--c-text-light);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        text-align: left;
+    }
+    .profile-link {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: var(--c-primary);
+    }
+    .category-widget ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .category-widget li {
+        border-bottom: 1px solid var(--c-border);
+    }
+    .category-widget li:last-child {
+        border-bottom: none;
+    }
+    .category-widget a {
+        display: block;
+        padding: 0.8rem 1rem;
+        color: var(--c-text);
+        transition: background 0.2s;
+        font-size: 0.95rem;
+    }
+    .category-widget a:hover {
+        background: #f9fafb;
+        color: var(--c-primary);
+        text-decoration: none;
+        padding-left: 1.2rem;
+    }
+    .banner-placeholder {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+</style>
