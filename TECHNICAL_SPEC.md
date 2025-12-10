@@ -51,10 +51,12 @@ toreta-fx-blog/
 ## 4. データスキーマ (CMS)
 
 ### 実践記録 (dailyTrades)
-- **パス**: `src/content/daily-trades/{date}`
-- **slug**: 日付 (YYYY-MM-DD)
+- **パス**: `src/content/daily-trades/{slug}`
+- **slug**: タイトルから生成 (例: 2025-12-10-trade) ※以前は自動日付
+- **フォーマット**: `.mdx` (`@astrojs/mdx` 必須)
 - **フィールド**:
-  - `date`: 日付
+  - `title`: 記事タイトル (Slugの元になる)
+  - `date`: 実際のトレード日 (Date Picker使用) **【重要: 日付順ソートのキー】**
   - `image`: マンガ画像 (public/images/daily-trades/)
   - `pair`: 通貨ペア (usdjpy, eurusd, gbpjpy, other)
   - `result`: 結果 (win, loss, draw, none)
@@ -62,7 +64,8 @@ toreta-fx-blog/
 
 ### FX解説 (fxGuides)
 - **パス**: `src/content/fx-guides/{slug}`
-- **slug**: タイトルベース
+- **slug**: タイトルから生成
+- **フォーマット**: `.mdx`
 - **フィールド**:
   - `title`: 記事タイトル
   - `category`: カテゴリ (basics, technical, risk, books, youtube, other)
@@ -77,22 +80,34 @@ toreta-fx-blog/
 - **Text**: `--c-text: #1f2937`
 - **Background**: `--c-bg: #ffffff`, `--c-bg-sub: #f3f4f6`
 
-## 6. 開発ガイドライン
+## 6. 開発ガイドライン（ユーザー向け運用フロー）
 
-### 記事の追加・編集
-1. ローカルサーバーを起動: `npm run dev`
-2. 管理画面にアクセス: `http://localhost:4321/keystatic`
-3. 記事を作成・保存すると、自動的に `src/content/` 内に `.mdoc` (または.md) ファイルが生成されます。
-4. 生成されたファイルをGitにコミットしてプッシュします。
+本プロジェクトは、非技術者でも運用できるように**自動化バッチスクリプト**を用意しています。
 
-### ページの追加
+### 基本ワークフロー
+1. **CMS起動**: `管理画面起動.bat` を実行
+   - ローカルサーバーが立ち上がり、ブラウザで管理画面が開きます。
+   - 記事を編集し、「保存 (Create/Save)」ボタンを押します。
+   - **確認**: 管理画面上部の「目のマーク（View）」を押して、表示を確認します。
+
+2. **公開 (Deploy)**: `ブログ更新.bat` を実行
+   - 自動的に `git add`, `git commit`, `git push` を行います。
+   - Cloudflare Pagesへ送信され、数分後に本番サイトが更新されます。
+
+### バッチファイルの内部動作
+- `管理画面起動.bat`: `npm run dev` を実行し、ブラウザを開く。
+- `ブログ更新.bat`: 変更を検出し、Gitコマンドを一括実行する。
+
+### ページの追加・開発者向け
 - 静的ページは `src/pages/` 直下に `.astro` ファイルを作成します。
 - 動的ページは `[slug].astro` などのパラメータ付きファイル名を使用し、`getStaticPaths` をエクスポートします（prerender: true の場合）。
+- `.mdx` ファイルを扱うため、`astro.config.mjs` には `mdx()` インテグレーションが必須です。
 
-### デプロイ
-- GitHubの `main` ブランチにプッシュすると、Cloudflare Pagesが自動的にビルド・デプロイします。
+### デプロイ設定 (Cloudflare Pages)
 - ビルドコマンド: `npm run build`
-- 出力ディレクトリ: `dist` (またはCloudflareアダプターの仕様に従う)
+- 出力ディレクトリ: `dist`
+- 環境変数: (特になし)
+- GitHub連携: `toreta-fx-blog` リポジトリの `main` ブランチを監視
 
 ## 7. 今後の拡張予定
 - **タグ機能の強化**: タグ別一覧ページの作成
