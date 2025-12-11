@@ -3,8 +3,7 @@
 <header class="header">
     <div class="container">
         <a href="/" class="logo">
-            <span class="logo-icon">📈</span>
-            トレ太のFX実践日記
+            <img src="/images/header-logo.png?v=1" alt="トレ太のFX実践日記" width="300" height="60" />
         </a>
         <nav class="nav">
             <a href="/">HOME</a>
@@ -34,12 +33,13 @@
         align-items: center;
     }
     .logo {
-        font-weight: bold;
-        font-size: 1.25rem;
-        color: var(--c-text);
         display: flex;
         align-items: center;
         gap: 0.5rem;
+    }
+    .logo img {
+        max-width: 100%;
+        height: auto;
     }
     .logo:hover {
         text-decoration: none;
